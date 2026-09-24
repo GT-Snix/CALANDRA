@@ -1,0 +1,186 @@
+body {
+  margin: 0;
+  background: transparent;
+}
+
+/* #root is the scroll fallback for when content exceeds MAX_HEIGHT (see
+   ipc/overlay.ts) — the window itself caps there and this lets content
+   keep scrolling instead of being clipped. In the common case (content
+   fits) the window is sized to match exactly, so this never scrolls. */
+#root {
+  max-height: 640px;
+  overflow-y: auto;
+}
+
+.overlay-root {
+  /* Deliberately no explicit height: ResizeObserver in OverlayView.tsx
+     measures this element's natural content height to drive window
+     sizing. Constraining it here would make that measurement
+     self-referential. */
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  padding: 14px 16px 18px;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 0.85rem;
+}
+
+.overlay-header {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.overlay-subheader {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.overlay-section + .overlay-section,
+.overlay-night-mode > .overlay-section + .overlay-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Rollover */
+.rollover-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rollover-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rollover-text {
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.rollover-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.rollover-btn {
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.rollover-btn:hover {
+  background: var(--hover-bg);
+}
+
+.rollover-btn-drop {
+  color: var(--text-muted);
+}
+
+/* Planning */
+.planning-add-form {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.planning-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.82rem;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.planning-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.planning-add-btn {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.planning-add-btn:hover:not(:disabled) {
+  background: var(--hover-bg);
+}
+
+.planning-add-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.planning-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.planning-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.planning-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.planning-delete-btn {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.planning-delete-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}

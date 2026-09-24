@@ -1,0 +1,134 @@
+.note-editor-shell {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar-bar {
+  flex: 0 0 auto;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 6px 24px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.toolbar-btn:hover {
+  background: var(--hover-bg);
+}
+
+.toolbar-btn.is-active {
+  background: var(--toolbar-active-bg);
+  color: var(--toolbar-active-text);
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 6px;
+}
+
+.note-scroll-region {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.note-content-column {
+  padding: 24px 32px 140px;
+}
+
+.note-content {
+  outline: none;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.note-content p {
+  margin: 0 0 0.6em;
+}
+
+.note-content pre {
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 10px 12px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+
+.note-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.note-content ul,
+.note-content ol {
+  padding-left: 1.4em;
+  margin: 0 0 0.6em;
+}
+
+.note-link,
+a.note-link {
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.youtube-embed {
+  margin: 0.6em 0;
+}
+
+.youtube-embed-link {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.youtube-embed-link img {
+  display: block;
+  width: 320px;
+  max-width: 100%;
+  height: auto;
+}
+
+.youtube-embed-play {
+  /* Intentionally theme-independent: this scrim sits on top of an
+     arbitrary video thumbnail image, not app chrome, so it needs to
+     contrast against thumbnails rather than match light/dark surfaces. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 0;
+}

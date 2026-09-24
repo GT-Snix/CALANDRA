@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://img.youtube.com; connect-src 'self' ws://localhost:5173 http://localhost:5173"
+    />
+    <title>Daylog</title>
+    <script>
+      // Applies the stored theme before first paint to avoid a flash of the
+      // wrong theme. Key must stay in sync with THEME_STORAGE_KEY in
+      // src/renderer/src/lib/theme.ts. Manual toggle only — deliberately
+      // does not read prefers-color-scheme.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('daylog:theme')
+          document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light')
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

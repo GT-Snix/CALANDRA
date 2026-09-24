@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' ws://localhost:5173 http://localhost:5173"
+    />
+    <title>Daylog Overlay</title>
+    <script>
+      // Same pattern as the main window's index.html: applies the stored
+      // theme before first paint. Key must stay in sync with
+      // THEME_STORAGE_KEY in src/renderer/src/lib/theme.ts. localStorage is
+      // shared across windows on the same origin, so this picks up whatever
+      // the main window last set — no toggle here, follows it passively.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('daylog:theme')
+          document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light')
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/overlay-entry.tsx"></script>
+  </body>
+</html>
